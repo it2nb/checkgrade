@@ -5,6 +5,22 @@
       fixed
       app
     >
+      <v-card class="pa-2">
+        <v-card-text class="font-weight-bold">
+          <v-icon>mdi-account</v-icon>
+          {{ userLogin.TeacherName }}
+        </v-card-text>
+        <v-card-text class="text-right">
+          {{ userLogin.Username }}
+          <v-btn
+            x-small
+            color="red"
+            outlined
+            class="ml-1"
+            @click="logout"
+          >ออกจากระบบ</v-btn>
+        </v-card-text>
+      </v-card>
       <v-list>
         <v-list-item
           v-for="(item, i) in items"
@@ -67,9 +83,7 @@ export default {
   name: 'DefaultLayout',
   data () {
     return {
-      clipped: false,
-      drawer: false,
-      fixed: false,
+      drawer: true,
       items: [
         {
           icon: 'mdi-apps',
@@ -97,10 +111,21 @@ export default {
           to: '/Admin/enrollment'
         }
       ],
-      miniVariant: false,
-      right: true,
-      rightDrawer: false,
-      title: 'ระบบตรวจสอบผลการเรียน (ผู้ดูแลระบบ)'
+      title: 'ระบบตรวจสอบผลการเรียน (ผู้ดูแลระบบ)',
+      userLogin: {}
+    }
+  },
+  mounted() {
+    this.userLogin = JSON.parse(localStorage.getItem('userLogin')) || {}
+    console.log(this.userLogin)
+    if(this.userLogin.isAdmin!=1) {
+      this.$router.replace('/')
+    }
+  },
+  methods: {
+    logout() {
+      localStorage.clear()
+      this.$router.replace('/')
     }
   }
 }
