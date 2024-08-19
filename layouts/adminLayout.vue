@@ -73,19 +73,34 @@ export default {
       items: [
         {
           icon: 'mdi-apps',
-          title: 'หน้าแรก',
-          to: '/'
+          title: 'ข้อมูลส่วนตัว',
+          to: '/Admin'
         },
         {
           icon: 'mdi-chart-bubble',
-          title: 'ตรวจสอบผลการเรียน',
-          to: '/checkgrade'
+          title: 'ข้อมูลรายวิชา',
+          to: '/Admin/subject'
+        },
+        {
+          icon: 'mdi-chart-bubble',
+          title: 'ข้อมูลผู้สอน',
+          to: '/Admin/teacher'
+        },
+        {
+          icon: 'mdi-chart-bubble',
+          title: 'ข้อมูลผู้เรียน',
+          to: '/Admin/student'
+        },
+        {
+          icon: 'mdi-chart-bubble',
+          title: 'ข้อมูลทะเบียนเรียน',
+          to: '/Admin/enrollment'
         }
       ],
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: 'ระบบตรวจสอบผลการเรียน'
+      title: 'ระบบตรวจสอบผลการเรียน (ผู้ดูแลระบบ)'
     }
   }
 }
